@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xss漏洞</title>
+</head>
+<body>
+    <form action="/xss" method="post">
+        {% autoescape false %}
+        {{form.csrf_token}}
+        {{form.input}}
+        {{form.submit}}
+        {% endautoescape %}
+    </form>
+    {{"你的输入："}}{{input|safe}}
+</body>
+</html>

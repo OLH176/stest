@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+    <form method="POST" action='/register'>
+        {{err}}
+        {{ form.csrf_token }}
+        {{"用户名"}}
+        {{form.username}}
+        {{"密码"}}
+        {{form.password}}
+        {{"姓名"}}
+        {{form.name}}
+        {{"身份证号"}}
+        {{form.idnum}}
+
+<!--        <label>用户名:<input type="text" name="username" value=""></label>-->
+<!--        <label>密码:<input type="password" name="password" value=""></label>-->
+<!--        <label>姓名：<input type="text" name="name" value=""></label>-->
+<!--        <label>身份证号：<input type="text" name="idnum" value=""></label>-->
+<!--        <input type="submit" name="new" value="确认">-->
+        {{form.submit}}
+    </form>
+</body>
+</html>

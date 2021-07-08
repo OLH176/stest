@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理</title>
+</head>
+<body>
+{{"欢迎！"}}
+    {{session['admin']}}
+    {{info}}
+    <form method="POST" action="/ad/deluser">
+        {{form.csrf_token}}
+        {{form.username}}
+        {{form.submit}}
+    </form>
+    <form method="POST" action="/ad/restore">
+        {{forma.csrf_token}}
+        {{forma.username}}
+        {{forma.submit}}
+    </form>
+    <form method="POST" action="ad/delmessage">
+        {{formb.csrf_token}}
+        {{formb.id}}
+        {{formb.submit}}
+    </form>
+    {% for m in msgs %}
+        {{m.id}}
+        <img src="{{url_for('static',filename=m.username+'.jpg')}}" width="100" height="100">
+        {{m.username+"："+m.message}}
+        <br>
+    {% endfor %}
+    {% for u in users %}
+        {{"用户名："}}{{u.username}}
+        {{"密码："}}{{u.password}}
+        {{"姓名："}}{{u.name}}
+        {{"身份证号："}}{{u.idnum}}
+        <br>
+    {% endfor %}
+</body>
+</html>

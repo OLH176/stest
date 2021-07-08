@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>漏洞展示</title>
+</head>
+<body>
+    <form method="post" action="\xss">
+        <input type="submit" value="xss">
+    </form>
+    <form method="post" action="\xss_">
+        <input type="submit" value="xss（无漏洞）">
+    </form>
+</body>
+</html>
