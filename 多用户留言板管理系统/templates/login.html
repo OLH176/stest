@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功</title>
+</head>
+<body>
+    {{"欢迎！"}}
+    {{session['username']}}
+    {{info|safe}}
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        {{form.csrf_token}}
+        {{form.image}}
+        {{form.submit}}
+    </form>
+    <form method="POST" action="/download">
+        {{forma.csrf_token}}
+        {{forma.username}}
+        {{forma.submit}}
+    </form>
+    <form method="POST" action="/message">
+        {% autoescape false %}
+        {{formb.csrf_token}}
+        {{formb.message}}
+        {{formb.submit}}
+        {% endautoescape %}
+    </form>
+    {% for m in msgs %}
+        {{m.id}}
+        <img src="{{url_for('static',filename=m.username+'.jpg')}}" width="100" height="100">
+        {{m.username+"："}}
+        {{m.message|safe}}
+        <br>
+    {% endfor %}
+</body>
+</html>
